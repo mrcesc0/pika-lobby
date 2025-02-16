@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { configSchema, Config } from './config.schema';
-import { tilesSchema, Tile } from './tile.schema';
+import { tilesSchema } from './tile.schema';
 
 type Maybe<T> = T | null | undefined;
 
@@ -9,7 +9,6 @@ export class GamesService {
   private static _instance: GamesService;
   private _baseUrl: string = 'https://casino.api.pikakasino.com/v1/pika';
   private _config: Maybe<Config>;
-  private _tiles: Maybe<Tile[]>;
 
   static get Instance(): GamesService {
     return (

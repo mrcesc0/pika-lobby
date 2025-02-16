@@ -2,9 +2,9 @@ import { z } from 'zod';
 
 // Schema for image metadata
 const imageMetadataSchema = z.object({
-  size: z.number(),
-  width: z.number(),
-  height: z.number(),
+  size: z.number().optional(),
+  width: z.number().optional(),
+  height: z.number().optional(),
 });
 
 // Schema for image variants (original, small, thumbnail)
@@ -43,7 +43,12 @@ const menuItemSchema = z.object({
   image: z.object({
     alt: z.string(),
   }),
-  activeImage: z.null(),
+  activeImage: z
+    .object({
+      alt: z.string(),
+      original: imageVariantSchema,
+    })
+    .nullable(),
   name: z.string(),
   path: z.string(),
   isLiveCasino: z.boolean(),
